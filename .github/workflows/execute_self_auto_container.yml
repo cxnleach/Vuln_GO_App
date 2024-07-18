@@ -7,6 +7,15 @@ on:
 
 jobs:
   run-action:
+    strategy:
+      max-parallel: 1
+      matrix:
+        base_img:
+          - "cimg/go:1.22"
+          - "golang:1.22-bookworm"
+          - "golang:1.22-bullseye"
+          - "golang:1.22-alpine"
+          - "bitnami/golang:latest"
     permissions:
       security-events: write
     runs-on: sca-runner
@@ -19,15 +28,12 @@ jobs:
         uses: checkmarx-ts/checkmarx-cxflow-plusplus-github-action@usability
         with:
           sast-log-level: DEBUG
+          project-name: $GITHUB_REPOSITORY-${{ matrix.base_img }}-{branch}
+          app-name: $GITHUB_REPOSITORY-${{ matrix.base_img }}
           sast-url: ${{ secrets.CX_SAST_URL }}
           sast-username: ${{ secrets.CX_SAST_USERNAME }}
           sast-password: ${{ secrets.CX_SAST_PASSWORD }}
           sca-tenant: ${{ secrets.CX_SCA_TENANT }}
           sca-username: ${{ secrets.CX_SCA_USERNAME }}
           sca-password: ${{ secrets.CX_SCA_PASSWORD }}
-
-    
-          
-
-
-
+          build-container-tag: ${{ matrix.base_img }}
