@@ -8,7 +8,7 @@ on:
 jobs:
   run-action:
     strategy:
-      max-parallel: 3
+      max-parallel: 1
       matrix:
         base_img:
           - "cimg/go:1.22"
