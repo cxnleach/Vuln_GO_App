@@ -28,7 +28,7 @@ jobs:
         uses: checkmarx-ts/checkmarx-cxflow-plusplus-github-action@usability
         with:
           sast-log-level: DEBUG
-          project-name: $GITHUB_REPOSITORY-${{ matrix.base_img }}-{branch}
+          project-name: $GITHUB_REPOSITORY-${{ matrix.base_img }}-self-hosted-{branch}
           app-name: $GITHUB_REPOSITORY-${{ matrix.base_img }}
           sast-url: ${{ vars.CX_SAST_URL }}
           sast-username: ${{ secrets.CX_SAST_USERNAME }}
