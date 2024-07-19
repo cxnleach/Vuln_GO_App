@@ -13,6 +13,7 @@ jobs:
     checkmarx-scan:
         permissions:
             security-events: write
+            discussions: write
         runs-on: ubuntu-latest
         steps:
           - name: Fetch Code
