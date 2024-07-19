@@ -1,5 +1,5 @@
 # This is an example of an real SDLC workflow config running in a self-hosted runner.
-name: SDLC Workflow
+name: SDLC Workflow with CxFlow++
 on:
     # In this example, scan on push requests to the protected branch.
     push:
@@ -14,7 +14,8 @@ jobs:
         permissions:
             security-events: write
             pull-requests: write
-        runs-on: ubuntu-latest
+        # runs-on: ubuntu-latest
+        runs-on: sca-runner
         steps:
           - name: Fetch Code
             uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
