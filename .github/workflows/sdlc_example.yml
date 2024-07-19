@@ -13,6 +13,7 @@ jobs:
     checkmarx-scan:
         permissions:
             security-events: write
+            discussions: write
         runs-on: ubuntu-latest
         steps:
           - name: Fetch Code
@@ -21,6 +22,7 @@ jobs:
           - name: Execute Scan
             uses: checkmarx-ts/checkmarx-cxflow-plusplus-github-action@usability
             with:
+                sast-log-level: DEBUG
                 sast-url: ${{ vars.CX_SAST_URL }}
                 sast-username: ${{ secrets.CX_SAST_USERNAME }}
                 sast-password: ${{ secrets.CX_SAST_PASSWORD }}
