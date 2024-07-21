@@ -7,19 +7,11 @@ on:
     
 jobs:
     checkmarx-scan:
-        env:
-            # Defined at Org-Level
-            JIRA_USERNAME: ${{ secrets.CX_JIRA_USER }}
-            JIRA_TOKEN: ${{ secrets.CX_JIRA_PASSWORD }}
-
-            # Defined at Repo-Level
-            JIRA_PROJECT: ${{ vars.CX_JIRA_PROJECT_KEY }}
         permissions:
-            # security-events: write
-            # issues: write
+            security-events: write
             pull-requests: write
-        # runs-on: ubuntu-latest
-        runs-on: sca-runner
+        runs-on: ubuntu-latest
+        # runs-on: sca-runner
         steps:
           - name: Fetch Code
             uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
@@ -27,10 +19,6 @@ jobs:
           - name: Execute Scan
             uses: checkmarx-ts/checkmarx-cxflow-plusplus-github-action@v2
             with:
-                sast-log-level: DEBUG
-                cxflow-jar-path: /opt/cx-flow/cx-flow-1.7.01.jar
-                application-yaml-path: /opt/cx-flow/default.yml
-                push-feedback-channel: Jira
                 sast-url: ${{ vars.CX_SAST_URL }}
                 sast-username: ${{ secrets.CX_SAST_USERNAME }}
                 sast-password: ${{ secrets.CX_SAST_PASSWORD }}
