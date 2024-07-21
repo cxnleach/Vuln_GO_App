@@ -10,7 +10,7 @@ jobs:
         env:
             # Defined at Org-Level
             JIRA_USERNAME: ${{ secrets.CX_JIRA_USER }}
-            JIRA_PASSWORD: ${{ secrets.CX_JIRA_PASSWORD }}
+            JIRA_TOKEN: ${{ secrets.CX_JIRA_PASSWORD }}
 
             # Defined at Repo-Level
             JIRA_PROJECT: ${{ vars.CX_JIRA_PROJECT_KEY }}
