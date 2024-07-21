@@ -1,11 +1,7 @@
-# This is an example of an real SDLC workflow config running in a self-hosted runner.
 name: SDLC Workflow with CxFlow++
 on:
-    # In this example, scan on push requests to the protected branch.
     push:
         branches: master
-
-        # In this example, scan on pull requests targetting the protected branch.
     pull_request:
         branches: master
     
@@ -30,5 +26,7 @@ jobs:
                 sca-tenant: ${{ secrets.CX_SCA_TENANT }}
                 sca-username: ${{ secrets.CX_SCA_USERNAME }}
                 sca-password: ${{ secrets.CX_SCA_PASSWORD }}
-                # break-on-manifest-failure: false
                 build-container-tag: cimg/go:1.22
+                push-feedback-channel: GitHub
+                upload-sarif-file: false
+
