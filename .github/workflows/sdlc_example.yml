@@ -14,8 +14,8 @@ jobs:
         permissions:
             security-events: write
             pull-requests: write
-        runs-on: ubuntu-latest
-        # runs-on: sca-runner
+        # runs-on: ubuntu-latest
+        runs-on: sca-runner
         steps:
           - name: Fetch Code
             uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
