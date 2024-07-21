@@ -8,7 +8,8 @@ on:
 jobs:
     checkmarx-scan:
         permissions:
-            security-events: write
+        #     security-events: write
+            issues: write
             pull-requests: write
         runs-on: ubuntu-latest
         # runs-on: sca-runner
