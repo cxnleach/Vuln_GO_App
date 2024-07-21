@@ -9,10 +9,10 @@ jobs:
     checkmarx-scan:
         permissions:
         #     security-events: write
-            issues: write
+            # issues: write
             pull-requests: write
-        runs-on: ubuntu-latest
-        # runs-on: sca-runner
+        # runs-on: ubuntu-latest
+        runs-on: sca-runner
         steps:
           - name: Fetch Code
             uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
@@ -21,6 +21,8 @@ jobs:
             uses: checkmarx-ts/checkmarx-cxflow-plusplus-github-action@v2
             with:
                 sast-log-level: DEBUG
+                cxflow-jar-path: /opt/cx-flow/cx-flow-1.7.01.jar
+                application-yaml-path: /opt/cx-flow/default.yml
                 sast-url: ${{ vars.CX_SAST_URL }}
                 sast-username: ${{ secrets.CX_SAST_USERNAME }}
                 sast-password: ${{ secrets.CX_SAST_PASSWORD }}
@@ -28,5 +30,4 @@ jobs:
                 sca-username: ${{ secrets.CX_SCA_USERNAME }}
                 sca-password: ${{ secrets.CX_SCA_PASSWORD }}
                 build-container-tag: cimg/go:1.22
-                push-feedback-channel: GitHub
 
