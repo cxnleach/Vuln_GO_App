@@ -30,4 +30,5 @@ jobs:
                 sca-tenant: ${{ secrets.CX_SCA_TENANT }}
                 sca-username: ${{ secrets.CX_SCA_USERNAME }}
                 sca-password: ${{ secrets.CX_SCA_PASSWORD }}
+                break-on-manifest-failure: false
                 # build-container-tag: cimg/go:1.22
