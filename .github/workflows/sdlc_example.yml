@@ -7,8 +7,15 @@ on:
     
 jobs:
     checkmarx-scan:
+        env:
+            # Defined at Org-Level
+            JIRA_USERNAME: ${{ secrets.CX_JIRA_USER }}
+            JIRA_PASSWORD: ${{ secrets.CX_JIRA_PASSWORD }}
+
+            # Defined at Repo-Level
+            JIRA_PROJECT: ${{ vars.CX_JIRA_PROJECT_KEY }}
         permissions:
-            security-events: write
+            # security-events: write
             # issues: write
             pull-requests: write
         # runs-on: ubuntu-latest
@@ -23,6 +30,7 @@ jobs:
                 sast-log-level: DEBUG
                 cxflow-jar-path: /opt/cx-flow/cx-flow-1.7.01.jar
                 application-yaml-path: /opt/cx-flow/default.yml
+                push-feedback-channel: Jira
                 sast-url: ${{ vars.CX_SAST_URL }}
                 sast-username: ${{ secrets.CX_SAST_USERNAME }}
                 sast-password: ${{ secrets.CX_SAST_PASSWORD }}
