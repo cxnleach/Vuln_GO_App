@@ -29,5 +29,4 @@ jobs:
                 sca-password: ${{ secrets.CX_SCA_PASSWORD }}
                 build-container-tag: cimg/go:1.22
                 push-feedback-channel: GitHub
-                upload-sarif-file: false
 
