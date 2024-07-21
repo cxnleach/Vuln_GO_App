@@ -21,7 +21,7 @@ jobs:
             uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
         
           - name: Execute Scan
-            uses: checkmarx-ts/checkmarx-cxflow-plusplus-github-action@usability
+            uses: checkmarx-ts/checkmarx-cxflow-plusplus-github-action@v2
             with:
                 sast-log-level: DEBUG
                 sast-url: ${{ vars.CX_SAST_URL }}
