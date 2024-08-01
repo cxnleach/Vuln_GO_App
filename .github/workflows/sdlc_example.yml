@@ -17,7 +17,7 @@ jobs:
             uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
         
           - name: Execute Scan
-            uses: checkmarx-ts/checkmarx-cxflow-plusplus-github-action@v2
+            uses: cxnleach/checkmarx-cxflow-plusplus-github-action@v1.0-2-prerelease
             with:
                 sast-url: ${{ vars.CX_SAST_URL }}
                 sast-username: ${{ secrets.CX_SAST_USERNAME }}
@@ -26,4 +26,5 @@ jobs:
                 sca-username: ${{ secrets.CX_SCA_USERNAME }}
                 sca-password: ${{ secrets.CX_SCA_PASSWORD }}
                 build-container-tag: cimg/go:1.22
+         
 
