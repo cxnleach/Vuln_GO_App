@@ -27,5 +27,6 @@ jobs:
                 sca-username: ${{ secrets.CX_SCA_USERNAME }}
                 sca-password: ${{ secrets.CX_SCA_PASSWORD }}
                 # build-container-tag: cimg/go:1.22
+                build-container-tag: golang:1.22-alpine
          
 
